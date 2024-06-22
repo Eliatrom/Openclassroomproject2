@@ -22,12 +22,12 @@ async function fetchWorks() {
     }
 }
 
-function displayWorks(works, category) {
+function displayWorks(works, categoryId = null) {
     let gallery = document.querySelector(".gallery");
-    gallery.innerHTML = ""; // Clear existing works
+    gallery.innerHTML = "";
 
     works.forEach(work => {
-        if (!category || work.category === category) {
+        if (!categoryId || work.category.id === categoryId) {
             let newfigure = document.createElement("figure");
             let img = document.createElement("img");
             let figcaption = document.createElement("figcaption");
@@ -45,9 +45,8 @@ function displayWorks(works, category) {
 
 function displayCategories(categories) {
     let categoriesDiv = document.querySelector(".categories");
-    categoriesDiv.innerHTML = ""; // Clear existing categories
+    categoriesDiv.innerHTML = "";
     
-    // Add "All" button to show all works
     let allButton = document.createElement("button");
     allButton.textContent = "Tous";
     allButton.addEventListener("click", () => {
@@ -56,7 +55,7 @@ function displayCategories(categories) {
         filterWorksByCategory(null);
     });
     categoriesDiv.appendChild(allButton);
-    allButton.classList.add('active'); // Set "Tous" as active by default
+    allButton.classList.add('active');
 
     categories.forEach(category => {
         let button = document.createElement("button");
@@ -64,15 +63,15 @@ function displayCategories(categories) {
         button.addEventListener("click", () => {
             document.querySelectorAll('.categories button').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            filterWorksByCategory(category.name);
+            filterWorksByCategory(category.id);
         });
         categoriesDiv.appendChild(button);
     });
 }
 
-async function filterWorksByCategory(category) {
+async function filterWorksByCategory(categoryId) {
     let works = await fetchWorks();
-    displayWorks(works, category);
+    displayWorks(works, categoryId);
 }
 
 async function init() {

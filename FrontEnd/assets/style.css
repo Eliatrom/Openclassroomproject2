@@ -95,7 +95,8 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+li:hover,
+li:active {
 	color: #B1663C;
 }
 #introduction {
@@ -189,7 +190,8 @@ footer nav ul {
 .categories {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+	justify-content: center;
 }
 .categories button {
     border: 2px solid #1D6154;
@@ -207,4 +209,96 @@ footer nav ul {
     background-color: #1D6154;
     color: #ffffff;
 }
+.login-container {
+	display: flex;
+	justify-content: center;
+    background-color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.login-header h1 {
+    color: #C1653B;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.login-header h2 {
+    color: #C1653B;
+    font-size: 1rem;
+    margin: 0;
+    font-weight: normal;
+}
+
+.login-form {
+    margin-top: 2rem;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login-form h2 {
+    color: #2D6A4F;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+	width: 30%;
+	border: none;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.login-container button {
+    width: 20%;
+    padding: 0.75rem;
+    background-color: #2D6A4F;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+	border-radius: 20px;
+	font: inherit;
+	margin-top: 1em;
+}
+
+.login-container button:hover {
+    background-color: #1B4332;
+}
+
+.login-container a {
+    display: block;
+    margin-top: 1rem;
+    color: #2D6A4F;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+header a {
+	text-decoration: none;
+	color: inherit;
+}
+.error-message {
+    color: red;
+    margin-top: 1rem;
+    display: none;
+}
+
 
