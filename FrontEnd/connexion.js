@@ -16,11 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const result = await response.json();
 
     if (response.ok) {
-        // Enregistrement du token ou de l'information de connexion
-        localStorage.setItem('token', result.token); // Assurez-vous que l'API renvoie un token
-        window.location.href = 'index.html'; // Redirection vers index.html
+        localStorage.setItem('token', result.token); 
+        window.location.href = 'index.html';
     } else {
-        // Affichage du message d'erreur
         const errorMessage = document.getElementById('errorMessage');
         errorMessage.textContent = 'Email ou mot de passe incorrect.';
         errorMessage.style.display = 'block';

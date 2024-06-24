@@ -1,3 +1,18 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const loginButton = document.getElementById('login');
+    const logoutButton = document.getElementById('logout');
+    const editButton = document.getElementById('editProjects');
+    const filtersContainer = document.querySelector('.categories');
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        loginButton.style.display = 'none';
+        logoutButton.style.display = 'inline';
+        editButton.style.display = 'inline';
+        filtersContainer.style.display = 'none';
+        displayEditGallery();
+    }
+})
 async function fetchCategories() {
     try {
         let response = await fetch("http://localhost:5678/api/categories");
@@ -80,6 +95,75 @@ async function init() {
 
     let works = await fetchWorks();
     displayWorks(works);
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'index.html';
+}
+const logoutButton = document.getElementById('logout').addEventListener("click", () => {
+    logout();
+});
+
+function openEditModal() {
+    document.getElementById('editModal').style.display = 'block';
+}
+
+const editButton = document.getElementById('editProjects').addEventListener("click", () => {
+    openEditModal();
+});
+
+function closeEditModal() {
+    document.getElementById('editModal').style.display = 'none';
+}
+// const modal = document.querySelector('.modal')
+//     document.addEventListener('click', e => {
+//         let clickDedans = modal.contains(e.target)
+//         if (!clickDedans && document.getElementById('editModal').style.display === 'block') {
+//             closeEditModal();
+//         }
+//     })
+window.addEventListener("keydown", e => {
+    if(e.key === 'Escape')
+    closeEditModal();
+})
+
+async function displayEditGallery() {
+    const response = await fetch('http://localhost:5678/api/works');
+    const works = await response.json();
+    const editGallery = document.querySelector('.edit-gallery');
+
+    works.forEach(work => {
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        img.src = work.imageUrl;
+        img.alt = work.title;
+
+        const deleteIcon = document.createElement('i');
+        deleteIcon.className = 'fas fa-trash-alt delete-icon';
+        deleteIcon.onclick = () => deleteWork(work.id, figure);
+
+        figure.appendChild(img);
+        figure.appendChild(deleteIcon);
+        editGallery.appendChild(figure);
+    });
+}
+
+
+
+async function deleteWork(workId, figureElement) {
+    const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (response.ok) {
+        figureElement.remove();
+    } else {
+        alert('Échec de la suppression du travail.');
+    }
 }
 
 // Initialiser l'affichage

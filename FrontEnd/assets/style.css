@@ -300,5 +300,105 @@ header a {
     margin-top: 1rem;
     display: none;
 }
+#logout {
+	display: none;
+}
+#editProjects {
+	display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    align-items: center;
+}
+
+#editProjects i {
+    margin-right: 5px;
+}
+
+#editProjects:hover {
+    color: #1E4B44;
+}
+
+#Portfolio h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#Portfolio h2 button {
+    font-size: 16px;
+    color: #2C6E66;
+    display: flex;
+    align-items: center;
+}
+
+#Portfolio h2 button i {
+    margin-right: 5px;
+}
+
+/* modale */
+.modal {
+    display: none; /* Cacher la modale par défaut */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.edit-gallery figure {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.edit-gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+    cursor: pointer;
+}
 
 

@@ -18,7 +18,8 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<a href="connexion.html"><li>login</li></a>
+			<li id="login"><a href="connexion.html">login</a></li>
+			<li id="logout"><a href="#">Logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,18 +37,30 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2>Mes Projets
+			<button id="editProjects">
+				<i class="fa-regular fa-pen-to-square"></i> Modifier
+			</button>
+		</h2>
+		
 		<div class="categories"></div>
 		<div class="gallery"></div>
 	</section>
+	<div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <div class="edit-gallery">
+            </div>
+        </div>
+    </div>
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
 		<form action="#" method="post">
 			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
+			<input type="text" name="name" id="name" autocomplete="name">
 			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
+			<input type="email" name="email" id="email" autocomplete="email">
 			<label for="message">Message</label>
 			<textarea name="message" id="message" cols="30" rows="10"></textarea>
 			<input type="submit" value="Envoyer">
