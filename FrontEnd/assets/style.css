@@ -346,12 +346,16 @@ header a {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
+    overflow: auto;
+    flex-wrap: wrap;
+    align-content: center;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     margin: 15% auto; 
     padding: 20px;
@@ -367,6 +371,7 @@ header a {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    text-align: end;
 }
 
 .close:hover,
@@ -384,8 +389,7 @@ header a {
 
 .edit-gallery figure {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 70px;
 }
 
 .edit-gallery img {
@@ -397,8 +401,47 @@ header a {
     position: absolute;
     top: 5px;
     right: 5px;
-    color: red;
+    color: white;
     cursor: pointer;
 }
+
+#openAddPhotoModal {
+    background-color: #2A6E67;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image-container {
+    position: relative;
+    width: 100px;
+    margin: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#addPhotoButton {
+    background-color: #2A6E67;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto 0;
+}
+
 
 
