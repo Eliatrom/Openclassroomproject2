@@ -37,14 +37,19 @@ addPhotoForm.addEventListener('submit', (event) => {
     const imageFile = addPhotoForm.querySelector('input[name="image"]').files[0];
 
     formData.append('title', title);
-    formData.append('image', imageFile);
-    formData.append('categoryId', categoryId);
+    formData.append('imageUrl', imageFile);
+    formData.append('category', categoryId);
+
+    console.log('Form data:', {
+        title,
+        categoryId,
+        imageFile
+    });
 
     fetch('http://localhost:5678/api/works', {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json'
         },
         body: formData
     })
